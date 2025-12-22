@@ -2,15 +2,39 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  
+
+  let [Steps,setSteps] = useState(0);
+
+  const addStep = () =>{
+    let step = Steps+1;
+    if(step > 20){
+      step = 0;
+      
+    }
+    else{
+      setSteps(step);
+    }
+  } 
+
+  const removeStep = () =>{
+    let step = Steps-1;
+    if(step < 0){
+      step = 0;
+      setSteps(step);
+    }
+    else{
+      setSteps(step);
+    }
+  } 
 
   return (
-    <> 
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-     
+    <>
+      <h2>Step Counting Machine</h2>
+      <h3>Total step = {Steps}</h3>
+      <button onClick={addStep} >AddSteps</button><br />
+      <button onClick={removeStep} >RemoveSteps</button>
+
+
     </>
   )
 }
